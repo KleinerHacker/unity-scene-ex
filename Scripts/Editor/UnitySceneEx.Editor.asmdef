@@ -1,0 +1,19 @@
+{
+    "name": "UnitySceneEx.Editor",
+    "rootNamespace": "UnitySceneEx.Editor",
+    "references": [
+        "GUID:3b8a68493e633a943988c0ce2da488de",
+        "GUID:5d0595cabca3f65418ec01a472735d07"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
