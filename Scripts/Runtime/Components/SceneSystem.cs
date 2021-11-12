@@ -8,7 +8,7 @@ using UnityEditorEx.Runtime.editor_ex.Scripts._00_Runtime.Types;
 using UnityEditorEx.Runtime.editor_ex.Scripts._00_Runtime.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityExtension.Runtime.extension.Scripts.Runtime.Utils.Extensions;
+using UnityExtension.Runtime.extension.Scripts.Utils.Extensions;
 
 namespace UnitySceneEx.Runtime.scene_ex.Scripts.Runtime.Components
 {
