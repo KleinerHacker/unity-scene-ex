@@ -56,9 +56,6 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Assets
         [Scene]
         private string scene;
 
-        [SerializeField]
-        private bool neverUnloadScene;
-
         #endregion
 
         #region Properties
@@ -66,8 +63,6 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Assets
         public string Scene => scene;
 
         public override string[] Scenes => new[] { scene };
-
-        public bool NeverUnloadScene => neverUnloadScene;
 
         #endregion
     } 
