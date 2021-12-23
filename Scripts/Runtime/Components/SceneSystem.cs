@@ -18,7 +18,8 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components
                 return;
             
             Debug.Log("Loading scene system");
-            LoadSceneSystemBasics(SceneSystemSettings.Singleton.BlendingSystem, SceneSystemSettings.Singleton.CreateEventSystem,
+            LoadSceneSystemBasics(SceneSystemSettings.Singleton.BlendingSystem, SceneSystemSettings.Singleton.AdditionalGameObjects, 
+                SceneSystemSettings.Singleton.CreateEventSystem,
                 eventSystem =>
                 {
                     eventSystem.sendNavigationEvents = SceneSystemSettings.Singleton.ESUseNavigation;
