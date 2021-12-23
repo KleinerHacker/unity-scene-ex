@@ -1,5 +1,7 @@
+using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnitySceneBase.Runtime.scene_system.scene_base.Scripts.Runtime.Assets;
 using UnitySceneBase.Runtime.scene_system.scene_base.Scripts.Runtime.Components;
 using UnitySceneBase.Runtime.scene_system.scene_base.Scripts.Runtime.Types;
@@ -41,8 +43,12 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components
                 });
 
             var goSceneSystem = new GameObject("Scene System");
-            goSceneSystem.AddComponent<SceneSystem>();
+            var sceneSystem = goSceneSystem.AddComponent<SceneSystem>();
             DontDestroyOnLoad(goSceneSystem);
+
+            var sceneItem = SceneSystemSettings.Singleton.Items
+                .FirstOrDefault(x => x.Scene == SceneManager.GetActiveScene().path);
+            sceneSystem.RaiseSwitchEvent(RuntimeOnSwitchSceneType.LoadScenes, sceneItem?.Identifier, new[] { SceneManager.GetActiveScene().path });
         }
 
         #endregion
@@ -63,7 +69,7 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components
             if (type == RuntimeOnSwitchSceneType.UnloadScenes)
             {
                 var scenesNeverUnload = SceneSystemSettings.Singleton.Items
-                    .Where(x => x.NeverUnloadScene)
+                    .Where(x => x.NeverUnload)
                     .SelectMany(x => x.Scenes)
                     .ToArray();
 
@@ -71,6 +77,24 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components
             }
 
             return result;
+        }
+
+        protected override string GetAllowedParameterDataType(string identifier)
+        {
+            var sceneItem = SceneSystemSettings.Singleton.Items.FirstOrDefault(x => x.Identifier == identifier);
+            if (sceneItem == null)
+                throw new ArgumentException("Identifier unknown: " + identifier);
+
+            return sceneItem.ParameterDataType;
+        }
+
+        protected override bool IsAllowNullParameterData(string identifier)
+        {
+            var sceneItem = SceneSystemSettings.Singleton.Items.FirstOrDefault(x => x.Identifier == identifier);
+            if (sceneItem == null)
+                throw new ArgumentException("Identifier unknown: " + identifier);
+
+            return sceneItem.ParameterDataAllowNull;
         }
     }
 }
