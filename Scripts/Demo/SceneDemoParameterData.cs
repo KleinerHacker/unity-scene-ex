@@ -1,8 +1,11 @@
+#if DEMO
 using UnityEngine;
 using UnitySceneBase.Runtime.scene_system.scene_base.Scripts.Runtime.Types;
+#endif
 
 namespace UnitySceneEx.Demo.scene_system.scene_ex.Scripts.Demo
 {
+#if DEMO
     [ParameterInitialDataType(typeof(SceneDemoInitialData))]
     public sealed class SceneDemoParameterData : ParameterData
     {
@@ -14,4 +17,5 @@ namespace UnitySceneEx.Demo.scene_system.scene_ex.Scripts.Demo
             Value = data.Value;
         }
     }
+#endif
 }
