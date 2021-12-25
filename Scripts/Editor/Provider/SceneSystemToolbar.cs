@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnitySceneBase.Editor.scene_system.scene_base.Scripts.Editor.Utils;
 using UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Assets;
 using UnityToolbarExtender;
 
@@ -32,6 +33,7 @@ namespace UnitySceneEx.Editor.scene_system.scene_ex.Scripts.Editor.Provider
             GUILayout.Space(5f);
 
             UseSystemProperty.boolValue = GUILayout.Toggle(UseSystemProperty.boolValue, "Use Scene System", ToolbarStyles.toggleStyle);
+            EditorGUILayoutEx.SceneVerbose(new GUIContent("Scene Logging"), ToolbarStyles.toggleStyle);
             
             SerializedObject.ApplyModifiedProperties();
         }

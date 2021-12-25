@@ -61,6 +61,9 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components
 
         #endregion
 
+        public override void Load(string identifier, bool doNotUnload, Action onFinished, ParameterData parameterData = null, bool overwrite = true) => 
+            Load(identifier, doNotUnload, onFinished, parameterData, overwrite, SceneSystemSettings.Singleton.ParameterInitialData);
+
         protected override SceneItem FindSceneItem(string identifier) => SceneSystemSettings.Singleton.Items.FirstOrDefault(x => x.Identifier == identifier);
 
         protected override string[] RaiseSwitchEvent(RuntimeOnSwitchSceneType type, string identifier, string[] scenes)
