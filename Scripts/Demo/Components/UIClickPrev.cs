@@ -7,7 +7,7 @@ namespace UnitySceneEx.Demo.scene_system.scene_ex.Scripts.Demo.Components
     {
         public void HandleClickPrev()
         {
-            SceneSystem.Singleton.Load("prev");
+            SceneController.Singleton.Load("prev");
         }
     }
 }

@@ -27,7 +27,7 @@ namespace UnitySceneEx.Editor.scene_system.scene_ex.Scripts.Editor.Provider
         #endregion
         
         public SceneSettingsProvider() : 
-            base("Project/Scene System", new []{"Scene", "System", "Tooling", "Loading"})
+            base("Project/Player/Scene System", new []{"Scene", "System", "Tooling", "Loading"})
         {
         }
 
