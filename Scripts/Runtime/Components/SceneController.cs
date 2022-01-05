@@ -9,7 +9,7 @@ using UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Assets;
 
 namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components
 {
-    public sealed class SceneSystem : SceneSystemBase<SceneSystem, SceneItem>
+    public sealed class SceneController : SceneControllerBase<SceneController, SceneItem>
     {
         #region Static Area
 
@@ -43,7 +43,7 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components
                 });
 
             var goSceneSystem = new GameObject("Scene System");
-            var sceneSystem = goSceneSystem.AddComponent<SceneSystem>();
+            var sceneSystem = goSceneSystem.AddComponent<SceneController>();
             DontDestroyOnLoad(goSceneSystem);
 
             var sceneItem = SceneSystemSettings.Singleton.Items

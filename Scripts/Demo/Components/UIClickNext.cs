@@ -7,7 +7,7 @@ namespace UnitySceneEx.Demo.scene_system.scene_ex.Scripts.Demo.Components
     {
         public void HandleNext()
         {
-            SceneSystem.Singleton.Load("next");
+            SceneController.Singleton.Load("next");
         }
     }
 }

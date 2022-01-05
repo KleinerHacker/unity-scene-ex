@@ -1,6 +1,6 @@
 {
   "name": "org.pcsoft.scene-ex",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "displayName": "Unity Scene Extension",
   "description": "Extension for Scene Management with support of scene over-blending.",
   "unity": "2021.1",
@@ -12,13 +12,13 @@
     "blending"
   ],
   "dependencies": {
-    "org.pcsoft.extension": "1.2.0",
+    "org.pcsoft.extension": "1.4.0",
     "org.pcsoft.editor-ex":"1.1.0",
     "org.pcsoft.blending":"2.0.0",
     "com.unity.inputsystem": "1.1.1",
     "org.pcsoft.asset-loader": "1.1.0",
-    "org.pcsoft.common-ex": "1.1.0",
-    "org.pcsoft.scene-base": "2.1.4",
+    "org.pcsoft.common-ex": "1.1.1",
+    "org.pcsoft.scene-base": "2.2.0",
     "com.marijnzwemmer.unity-toolbar-extender": "1.4.1"
   },
   "author": {
