@@ -4,7 +4,7 @@ using UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Assets;
 
 namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime
 {
-    public static class UnitySceneExEvent
+    public static class UnitySceneExStartupEvents
     {
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
         public static void Initialize()
