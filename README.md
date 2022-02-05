@@ -90,7 +90,7 @@ public static void SwitchSceneLoad(RuntimeOnSwitchSceneArgs args)
 ```
 So you can add additional scenes to load or unload.
 ```CSharp
-[RuntimeOnBlendScene(RuntimeOnBlendSceneType.PostShowBlend)
+[RuntimeOnBlendScene(RuntimeOnBlendSceneType.PostShowBlend)]
 public static void SwitchBlend(RuntimeOnBlendSceneArgs args)
 {
   //...
