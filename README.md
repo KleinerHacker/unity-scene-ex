@@ -76,10 +76,14 @@ To handle own actions you can add static callbacks for blending state changes an
 [RuntimeOnSwitchScene(RuntimeOnSwitchSceneType.LoadScenes)]
 public static void SwitchSceneLoad(RuntimeOnSwitchSceneArgs args)
 {
+    //...
+
     if (args.Identifier == MenuKey)
     {
         args.AdditionalScenes = new[] { SceneParameter.GetData<MenuParameter>().MenuScene };
     }
+    
+    //...
     
     args.Callback.Invoke();
 }
@@ -89,7 +93,7 @@ So you can add additional scenes to load or unload.
 [RuntimeOnBlendScene(RuntimeOnBlendSceneType.PostShowBlend)
 public static void SwitchBlend(RuntimeOnBlendSceneArgs args)
 {
-  ...
+  //...
   
   args.Callback.Invoke();
 }
