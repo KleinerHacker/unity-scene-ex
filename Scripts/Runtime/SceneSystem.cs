@@ -17,5 +17,11 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime
 
         public static void Load(string identifier, bool doNotUnload, Action onFinished, ParameterData parameterData = null, bool overwrite = true) => 
             SceneController.Singleton.Load(identifier, doNotUnload, onFinished, parameterData, overwrite);
+
+        public static void ExitApplication(bool showBlend = true, Action preExit = null) =>
+            SceneController.Singleton.ExitApplication(showBlend, preExit);
+        
+        public static void ExitApplication(bool showBlend = true, Action<Action> preExit = null) =>
+            SceneController.Singleton.ExitApplication(showBlend, preExit);
     }
 }

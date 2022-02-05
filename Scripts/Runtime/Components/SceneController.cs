@@ -48,7 +48,7 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components
 
             var sceneItem = SceneSystemSettings.Singleton.Items
                 .FirstOrDefault(x => x.Scene == SceneManager.GetActiveScene().path);
-            sceneSystem.RaiseSwitchEvent(RuntimeOnSwitchSceneType.LoadScenes, sceneItem?.Identifier, new[] { SceneManager.GetActiveScene().path });
+            sceneSystem.RaiseSceneEvent(RuntimeOnSwitchSceneType.LoadScenes, sceneItem?.Identifier, new[] { SceneManager.GetActiveScene().path });
         }
 
         #endregion
@@ -66,9 +66,9 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components
 
         protected override SceneItem FindSceneItem(string identifier) => SceneSystemSettings.Singleton.Items.FirstOrDefault(x => x.Identifier == identifier);
 
-        protected override string[] RaiseSwitchEvent(RuntimeOnSwitchSceneType type, string identifier, string[] scenes)
+        protected override string[] RaiseSceneEvent(RuntimeOnSwitchSceneType type, string identifier, string[] scenes)
         {
-            var result = base.RaiseSwitchEvent(type, identifier, scenes);
+            var result = base.RaiseSceneEvent(type, identifier, scenes);
             if (type == RuntimeOnSwitchSceneType.UnloadScenes)
             {
                 var scenesNeverUnload = SceneSystemSettings.Singleton.Items
