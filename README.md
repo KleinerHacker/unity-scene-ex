@@ -80,6 +80,8 @@ public static void SwitchSceneLoad(RuntimeOnSwitchSceneArgs args)
     {
         args.AdditionalScenes = new[] { SceneParameter.GetData<MenuParameter>().MenuScene };
     }
+    
+    args.Callback.Invoke();
 }
 ```
 So you can add additional scenes to load or unload.
@@ -88,6 +90,8 @@ So you can add additional scenes to load or unload.
 public static void SwitchBlend(RuntimeOnBlendSceneArgs args)
 {
   ...
+  
+  args.Callback.Invoke();
 }
 ```
 So you can do actions on specific blend actions.
