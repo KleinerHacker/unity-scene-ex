@@ -91,3 +91,5 @@ public static void SwitchBlend(RuntimeOnBlendSceneArgs args)
 }
 ```
 So you can do actions on specific blend actions.
+
+__Please note: it is required to call the callback action to continue loading!__
