@@ -1,11 +1,9 @@
 {
     "name": "UnitySceneEx.Demo",
     "rootNamespace": "UnitySceneEx.Demo",
-    "references": [
-        "GUID:3b8a68493e633a943988c0ce2da488de",
-        "GUID:e13cddd4b5df70e48add7fb8c6d723a8",
-        "GUID:7e0e70507eb6bf44e9f9fd2a3026ac35"
-    ],
+    "references": ["GUID:3b8a68493e633a943988c0ce2da488de",
+"GUID:e13cddd4b5df70e48add7fb8c6d723a8",
+"GUID:7e0e70507eb6bf44e9f9fd2a3026ac35"],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
