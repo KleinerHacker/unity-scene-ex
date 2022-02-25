@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityExtension.Runtime.extension.Scripts.Runtime.Components.Singleton.Attributes;
 using UnitySceneBase.Runtime.scene_system.scene_base.Scripts.Runtime.Assets;
 using UnitySceneBase.Runtime.scene_system.scene_base.Scripts.Runtime.Components;
 using UnitySceneBase.Runtime.scene_system.scene_base.Scripts.Runtime.Types;
@@ -13,12 +14,12 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components
     {
         #region Static Area
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        public static void LoadSceneSystem()
+        [SingletonCondition]
+        public static bool IsSingletonAlive() => SceneSystemSettings.Singleton.UseSystem;
+
+        [SingletonInitializer]
+        public static void Initialize(SceneController instance)
         {
-            if (!SceneSystemSettings.Singleton.UseSystem)
-                return;
-            
             Debug.Log("Loading scene system");
             LoadSceneSystemBasics(SceneSystemSettings.Singleton.BlendingSystem, SceneSystemSettings.Singleton.AdditionalGameObjects, 
                 SceneSystemSettings.Singleton.CreateEventSystem,
@@ -41,14 +42,10 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components
 
                     inputModule.xrTrackingOrigin = SceneSystemSettings.Singleton.ESXROrigin;
                 });
-
-            var goSceneSystem = new GameObject("Scene System");
-            var sceneSystem = goSceneSystem.AddComponent<SceneController>();
-            DontDestroyOnLoad(goSceneSystem);
-
+            
             var sceneItem = SceneSystemSettings.Singleton.Items
                 .FirstOrDefault(x => x.Scene == SceneManager.GetActiveScene().path);
-            sceneSystem.RaiseSceneEvent(RuntimeOnSwitchSceneType.LoadScenes, sceneItem?.Identifier, new[] { SceneManager.GetActiveScene().path });
+            instance.RaiseSceneEvent(RuntimeOnSwitchSceneType.LoadScenes, sceneItem?.Identifier, new[] { SceneManager.GetActiveScene().path });
         }
 
         #endregion
