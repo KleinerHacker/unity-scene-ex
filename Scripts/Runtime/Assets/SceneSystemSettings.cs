@@ -1,6 +1,3 @@
-#if !UNITY_EDITOR
-using UnityAssetLoader.Runtime.asset_loader.Scripts.Runtime.Loader;
-#endif
 using System;
 using UnityEditor;
 using UnityEditorEx.Runtime.editor_ex.Scripts.Runtime.Extra;
@@ -9,39 +6,16 @@ using UnitySceneBase.Runtime.scene_system.scene_base.Scripts.Runtime.Assets;
 
 namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Assets
 {
-    public sealed class SceneSystemSettings : SceneSystemSettingsBase<SceneItem>
+    public sealed class SceneSystemSettings : SceneSystemSettingsBase<SceneItem, SceneSystemSettings>
     {
         #region Static Area
 
-#if UNITY_EDITOR
-        private const string Path = "Assets/Resources/scene-system.asset";
-#endif
+        private const string FileName = "scene-system.asset";
 
-        public static SceneSystemSettings Singleton
-        {
-            get
-            {
-#if UNITY_EDITOR
-                var settings = AssetDatabase.LoadAssetAtPath<SceneSystemSettings>(Path);
-                if (settings == null)
-                {
-                    Debug.Log("Unable to find game settings, create new");
-
-                    settings = new SceneSystemSettings();
-                    AssetDatabase.CreateAsset(settings, Path);
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
-                }
-
-                return settings;
-#else
-                return AssetResourcesLoader.Instance.GetAsset<SceneSystemSettings>();
-#endif
-            }
-        }
+        public static SceneSystemSettings Singleton => GetSingleton("Scene System", FileName);
 
 #if UNITY_EDITOR
-        public static SerializedObject SerializedSingleton => new SerializedObject(Singleton);
+        public static SerializedObject SerializedSingleton => GetSerializedSingleton("Scene System", FileName);
 #endif
 
         #endregion
@@ -65,5 +39,5 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Assets
         public override string[] Scenes => new[] { scene };
 
         #endregion
-    } 
+    }
 }
