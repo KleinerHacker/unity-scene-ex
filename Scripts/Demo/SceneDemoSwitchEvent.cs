@@ -1,3 +1,4 @@
+#if DEMO
 using UnitySceneBase.Runtime.scene_system.scene_base.Scripts.Runtime.Types;
 
 namespace UnitySceneEx.Demo.scene_system.scene_ex.Scripts.Demo
@@ -23,3 +24,4 @@ namespace UnitySceneEx.Demo.scene_system.scene_ex.Scripts.Demo
         }
     }
 }
+#endif
