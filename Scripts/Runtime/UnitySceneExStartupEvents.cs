@@ -1,4 +1,4 @@
-using UnityAssetLoader.Runtime.asset_loader.Scripts.Runtime.Loader;
+using UnityAssetLoader.Runtime.asset_loader.Scripts.Runtime;
 using UnityEngine;
 using UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Assets;
 
@@ -10,7 +10,7 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime
         public static void Initialize()
         {
             Debug.Log("Load scene settings");
-            AssetResourcesLoader.Instance.LoadAssets<SceneSystemSettings>("");
+            AssetResourcesLoader.LoadFromResources<SceneSystemSettings>("");
         }
     }
 }
