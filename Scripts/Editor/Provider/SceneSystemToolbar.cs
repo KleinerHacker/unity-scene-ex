@@ -1,6 +1,7 @@
 using UnityEditor;
+using UnityEditorEx.Editor.editor_ex.Scripts.Editor.Utils;
 using UnityEngine;
-using UnitySceneBase.Editor.scene_system.scene_base.Scripts.Editor.Utils;
+using UnitySceneBase.Editor.scene_system.scene_base.Scripts.Editor;
 using UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Assets;
 using UnityToolbarExtender;
 
@@ -33,7 +34,7 @@ namespace UnitySceneEx.Editor.scene_system.scene_ex.Scripts.Editor.Provider
             GUILayout.Space(5f);
 
             UseSystemProperty.boolValue = GUILayout.Toggle(UseSystemProperty.boolValue, "Use Scene System", ToolbarStyles.toggleStyle);
-            EditorGUILayoutEx.SceneVerbose(new GUIContent("Scene Logging"), ToolbarStyles.toggleStyle);
+            ExtendedEditorGUILayout.SymbolField(new GUIContent("Editor Scene Loading"), UnitySceneBaseEditorConstants.Building.Symbol.EditorSceneLoading, ToolbarStyles.toggleStyle);
             
             SerializedObject.ApplyModifiedProperties();
         }
