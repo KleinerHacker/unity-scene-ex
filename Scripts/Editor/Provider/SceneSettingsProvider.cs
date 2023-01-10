@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEditor;
+using UnityEditorEx.Editor.editor_ex.Scripts.Editor.Utils;
 using UnityEditorInternal;
 using UnitySceneBase.Editor.scene_system.scene_base.Scripts.Editor.Provider;
 using UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Assets;
@@ -37,6 +38,8 @@ namespace UnitySceneEx.Editor.scene_system.scene_ex.Scripts.Editor.Provider
             EditorGUILayout.HelpBox("World Extensions and Scene Extension are not compatible. Please remove one dependency from project!", MessageType.Error);
 #endif
             
+            ExtendedEditorGUILayout.SymbolFieldLeft("Activate Toolbar Integration", "SCENE_TOOLBAR_INTEGRATION");
+            EditorGUILayout.Space(25f);
             base.OnGUI(searchContext);
         }
 

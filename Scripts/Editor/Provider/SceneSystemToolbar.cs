@@ -10,6 +10,7 @@ namespace UnitySceneEx.Editor.scene_system.scene_ex.Scripts.Editor.Provider
     [InitializeOnLoad]
     public static class SceneSystemToolbar
     {
+#if SCENE_TOOLBAR_INTEGRATION
         private static readonly SceneSystemSettings SceneSystemSettings;
         private static readonly SerializedObject SerializedObject;
 
@@ -57,5 +58,6 @@ namespace UnitySceneEx.Editor.scene_system.scene_ex.Scripts.Editor.Provider
                 };
             }
         }
+#endif
     }
 }
