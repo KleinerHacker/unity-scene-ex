@@ -1,3 +1,4 @@
+#if PCSOFT_SCENE
 using System;
 using UnitySceneBase.Runtime.scene_system.scene_base.Scripts.Runtime.Types;
 using UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components;
@@ -25,3 +26,4 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime
             SceneController.Singleton.ExitApplication(showBlend, preExit);
     }
 }
+#endif

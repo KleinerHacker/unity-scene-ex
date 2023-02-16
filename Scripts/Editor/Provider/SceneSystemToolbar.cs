@@ -14,15 +14,11 @@ namespace UnitySceneEx.Editor.scene_system.scene_ex.Scripts.Editor.Provider
         private static readonly SceneSystemSettings SceneSystemSettings;
         private static readonly SerializedObject SerializedObject;
 
-        private static readonly SerializedProperty UseSystemProperty;
-        
         static SceneSystemToolbar()
         {
             SceneSystemSettings = SceneSystemSettings.Singleton;
             SerializedObject = SceneSystemSettings.SerializedSingleton;
 
-            UseSystemProperty = SerializedObject.FindProperty("useSystem");
-            
             ToolbarExtender.RightToolbarGUI.Add(OnToolbarGUI);
         }
 
@@ -31,12 +27,12 @@ namespace UnitySceneEx.Editor.scene_system.scene_ex.Scripts.Editor.Provider
             SerializedObject.Update();
 
             GUILayout.FlexibleSpace();
-            
+
             GUILayout.Space(5f);
 
-            UseSystemProperty.boolValue = GUILayout.Toggle(UseSystemProperty.boolValue, "Use Scene System", ToolbarStyles.toggleStyle);
-            ExtendedEditorGUILayout.SymbolField(new GUIContent("Editor Scene Loading"), UnitySceneBaseEditorConstants.Building.Symbol.EditorSceneLoading, ToolbarStyles.toggleStyle);
-            
+            ExtendedEditorGUILayout.SymbolField(new GUIContent("Use Scene System"), "PCSOFT_SCENE", ToolbarStyles.toggleStyle);
+            ExtendedEditorGUILayout.SymbolField(new GUIContent("Editor Scene Loading"), "PCSOFT_SCENE_EDITOR_LOAD", ToolbarStyles.toggleStyle);
+
             SerializedObject.ApplyModifiedProperties();
         }
 
