@@ -1,3 +1,4 @@
+#if PCSOFT_SCENE
 using System;
 using System.Linq;
 using UnityBase.Runtime.@base.Scripts.Runtime.Components.Singleton.Attributes;
@@ -13,9 +14,6 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components
     public sealed class SceneController : SceneControllerBase<SceneController, SceneItem>
     {
         #region Static Area
-
-        [SingletonCondition]
-        public static bool IsSingletonAlive() => SceneSystemSettings.Singleton.UseSystem;
 
         [SingletonInitializer]
         public static void Initialize(SceneController instance)
@@ -98,3 +96,4 @@ namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime.Components
         }
     }
 }
+#endif
