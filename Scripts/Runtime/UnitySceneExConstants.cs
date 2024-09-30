@@ -1,4 +1,4 @@
-﻿namespace UnitySceneEx.Runtime.scene_system.scene_ex.Scripts.Runtime
+﻿namespace UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime
 {
     internal static class UnitySceneExConstants
     {
