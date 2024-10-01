@@ -89,6 +89,7 @@ namespace UnitySceneEx.Editor.Projects.unity_scene_ex.Scripts.Editor.Provider
                         .Where(x => !string.IsNullOrEmpty(x))
                         .ToList();
                     scenes.Insert(0, WorldSettings.Singleton.StartupScene);
+                    scenes = scenes.Distinct().ToList();
                     EditorBuildSettings.scenes = scenes
                         .Select(x => new EditorBuildSettingsScene(x, true))
                         .ToArray();
