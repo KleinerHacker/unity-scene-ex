@@ -1,3 +1,4 @@
+#if DEMO
 using System;
 using UnityEngine;
 using UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime.Components;
@@ -33,3 +34,4 @@ namespace UnitySceneEx.Demo.Projects.unity_scene_ex.Scripts.Demo
         }
     }
 }
+#endif
