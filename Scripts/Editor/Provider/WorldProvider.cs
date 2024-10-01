@@ -52,7 +52,7 @@ namespace UnitySceneEx.Editor.Projects.unity_scene_ex.Scripts.Editor.Provider
 
         public override void OnTitleBarGUI()
         {
-            ExtendedEditorGUILayout.SymbolField("Activate Verbose Logging", "WORLD_LOGGING");
+            ExtendedEditorGUILayout.SymbolField("Activate Verbose Logging", "PCSOFT_WORLD_LOGGING");
         }
 
         public override void OnGUI(string searchContext)
