@@ -21,6 +21,10 @@ namespace UnitySceneEx.Editor.Projects.unity_scene_ex.Scripts.Editor.Provider
             var scenePathProp = prop.FindPropertyRelative("scenePath");
             
             EditorGUI.PropertyField(rect.Height(20f), scenePathProp, GUIContent.none);
+            if (string.IsNullOrWhiteSpace(scenePathProp.stringValue))
+            {
+                GUI.Box(rect.Size(new Vector2(20f, 20f)), EditorGUIUtility.IconContent("console.warnicon.sml").image);
+            }
         }
 
         private void GroupsElementCallback(Rect rect, int i, bool isactive, bool isfocused)

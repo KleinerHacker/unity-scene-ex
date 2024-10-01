@@ -22,11 +22,15 @@ namespace UnitySceneEx.Editor.Projects.unity_scene_ex.Scripts.Editor.Provider
         #endregion
 
         private WorldList worldList;
+        private FadeList fadeList;
+        
+        private bool fadeListFoldout;
         
         private SerializedObject _settings;
 
         private SerializedProperty startupSceneProperty;
         private SerializedProperty worldsProperty;
+        private SerializedProperty fadesProperty;
 
         public WorldProvider() : base("Project/Player/Worlds", SettingsScope.Project, new List<string> {"World", "Scene"})
         {
@@ -40,8 +44,10 @@ namespace UnitySceneEx.Editor.Projects.unity_scene_ex.Scripts.Editor.Provider
 
             startupSceneProperty = _settings.FindProperty("startupScene");
             worldsProperty = _settings.FindProperty("worlds");
+            fadesProperty = _settings.FindProperty("fades");
 
             worldList = new WorldList(_settings, worldsProperty);
+            fadeList = new FadeList(_settings, fadesProperty);
         }
 
         public override void OnTitleBarGUI()
@@ -56,6 +62,15 @@ namespace UnitySceneEx.Editor.Projects.unity_scene_ex.Scripts.Editor.Provider
             EditorGUILayout.LabelField("Startup Scene:");
             EditorGUILayout.PropertyField(startupSceneProperty, GUIContent.none);
             
+            EditorGUILayout.Space();
+
+            fadeListFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(fadeListFoldout, "Fades");
+            if (fadeListFoldout)
+            {
+                fadeList.DoLayoutList();
+            }
+            EditorGUILayout.EndFoldoutHeaderGroup();
+
             EditorGUILayout.Space();
             
             EditorGUILayout.LabelField("List of worlds", EditorStyles.boldLabel);

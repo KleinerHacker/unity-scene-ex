@@ -2,5 +2,6 @@
 {
     internal static class UnitySceneExConstants
     {
+        public const string Root = "Scene System";
     }
 }

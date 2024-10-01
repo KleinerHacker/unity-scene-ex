@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEditorEx.Runtime.Projects.unity_editor_ex.Scripts.Runtime.Assets;
 using UnityEditorEx.Runtime.Projects.unity_editor_ex.Scripts.Runtime.Extra;
 using UnityEngine;
+using UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime.Components;
 
 namespace UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime.Assets
 {
@@ -20,7 +21,10 @@ namespace UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime.Assets
         
         #region Save Data
 
-        [SerializeField] [Scene] private string startupScene; 
+        [SerializeField] [Scene] private string startupScene;
+        
+        [SerializeField]
+        private FadeItem[] fades = Array.Empty<FadeItem>();
 
         [SerializeField] private WorldItem[] worlds = Array.Empty<WorldItem>();
 
@@ -30,7 +34,30 @@ namespace UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime.Assets
 
         public string StartupScene => startupScene;
 
+        public FadeItem[] Fades => fades;
+
         public WorldItem[] Worlds => worlds;
+
+        #endregion
+    }
+
+    [Serializable]
+    public sealed class FadeItem
+    {
+        #region Save Data
+
+        [SerializeField] private string identifier;
+        
+        [SerializeField] 
+        private WorldFade fade;
+
+        #endregion
+
+        #region Properties
+
+        public string Identifier => identifier;
+
+        public WorldFade Fade => fade;
 
         #endregion
     }
@@ -45,6 +72,8 @@ namespace UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime.Assets
         
         [SerializeField]
         private SceneItem[] scenes = Array.Empty<SceneItem>();
+
+        [SerializeField] private string fadeKey;
         
         #endregion
 
@@ -53,6 +82,8 @@ namespace UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime.Assets
         public string Identifier => identifier;
 
         public SceneItem[] Scenes => scenes;
+
+        public string FadeKey => fadeKey;
 
         #endregion
     }
