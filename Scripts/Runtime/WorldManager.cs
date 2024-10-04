@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityBase.Runtime.Projects.unity_base.Scripts.Runtime.Utils.Extensions;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime.Assets;

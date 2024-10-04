@@ -1,5 +1,8 @@
 using System;
 using UnityEngine;
+#if UNITY_URP
+using UnityEngine.Rendering.Universal;
+#endif
 
 namespace UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime.Components
 {
@@ -15,13 +18,29 @@ namespace UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime.Component
         protected bool autoFinish = true;
 
         #endregion
-        
+
+        #region Builtin Methods
+
+#if UNITY_EDITOR
+
+        private void OnValidate()
+        {
+#if UNITY_URP
+            // var cameraData = GetComponent<UniversalAdditionalCameraData>();
+            // cameraData.renderType = CameraRenderType.Overlay;
+#endif
+        }
+
+#endif
+
+        #endregion
+
         public abstract void Show(string worldKey, Action onComplete);
         public abstract void ShowImmediately(string worldKey);
-        
+
         public abstract void OnProgressUpdated(float progress);
         public abstract void OnProgressCompleted(string worldKey);
-        
+
         public abstract void Hide(string worldKey, Action onComplete);
         public abstract void HideImmediately(string worldKey);
 
@@ -30,7 +49,6 @@ namespace UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime.Component
         /// </summary>
         protected void Finish()
         {
-            
         }
     }
 }

@@ -4,7 +4,8 @@
     "references": [
         "GUID:64c52e74a682df04189ccbd30b6ca5aa",
         "GUID:86c5ae22b787083498226e9faa99731d",
-        "GUID:03e750fc17f6cff499337d89b1e613c8"
+        "GUID:03e750fc17f6cff499337d89b1e613c8",
+        "GUID:15fc0a57446b3144c949da3e2b9737a9"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -13,6 +14,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.render-pipelines.universal",
+            "expression": "",
+            "define": "UNITY_URP"
+        }
+    ],
     "noEngineReferences": false
 }
