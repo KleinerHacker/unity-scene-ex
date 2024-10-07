@@ -84,8 +84,28 @@ namespace UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime
             Debug.Log("[Scene System] Loading completetd");
 #endif
             UnityDispatcher.RunLater(() => fade.OnProgressCompleted(world.Identifier));
-            onComplete?.Invoke();
-            
+
+            if (fade.AutoFinish)
+            {
+                onComplete?.Invoke();
+            }
+            else
+            {
+#if PCSOFT_WORLD_LOGGING
+                Debug.Log("[Scene System] Wait for manual finishing...");
+#endif
+                fade.OnFinished += RunComplete;
+            }
+
+            void RunComplete(object sender, EventArgs e)
+            {
+#if PCSOFT_WORLD_LOGGING
+                Debug.Log("[Scene System] Receive manual finishing...");
+#endif
+                
+                fade.OnFinished -= RunComplete;
+                onComplete?.Invoke();
+            }
         }
 
         private static AsyncOperation LoadScene(SceneItem scene, bool firstScene)

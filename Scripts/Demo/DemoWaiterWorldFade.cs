@@ -3,19 +3,18 @@ using System;
 using TMPro;
 using UnityAnimation.Runtime.Projects.unity_animation.Scripts.Runtime.Utils;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime.Components;
 
 namespace UnitySceneEx.Demo.Projects.unity_scene_ex.Scripts.Demo
 {
     [DisallowMultipleComponent]
-    public sealed class DemoSimpleWorldFade : WorldFade
+    public sealed class DemoWaiterWorldFade : WorldFade
     {
         #region Inspector Data
 
         [SerializeField] private CanvasGroup root;
-        [SerializeField] private CanvasGroup text;
-        
-        [SerializeField] private TextMeshProUGUI progress;
+        [SerializeField] private TextMeshProUGUI text;
 
         #endregion
 
@@ -23,20 +22,24 @@ namespace UnitySceneEx.Demo.Projects.unity_scene_ex.Scripts.Demo
 
         private void Awake()
         {
-            root.alpha = 0;
-            text.alpha = 0;
+            root.alpha = 0f;
+        }
+
+        private void LateUpdate()
+        {
+            if (State == WorldFadeState.Completed && Keyboard.current.anyKey.wasPressedThisFrame)
+            {
+                Finish();
+            }
         }
 
         #endregion
         
         protected override void DoShow(string worldKey, Action onComplete)
         {
-            root.alpha = 0;
-            text.alpha = 0;
-            
+            root.alpha = 0f;
             AnimationBuilder.Create(this)
                 .AnimateConstant(1f, x => root.alpha = x)
-                .AnimateConstant(1f, x => text.alpha = x)
                 .WithFinisher(onComplete)
                 .Start();
         }
@@ -44,27 +47,22 @@ namespace UnitySceneEx.Demo.Projects.unity_scene_ex.Scripts.Demo
         protected override void DoShowImmediately(string worldKey)
         {
             root.alpha = 1f;
-            text.alpha = 1f;
         }
 
         protected override void DoProgressUpdated(string worldKey, float progress)
         {
-            Debug.LogError("PROGRESS: " + progress);
-            this.progress.text = progress + "%";
+            text.text = progress.ToString("F2") + " %";
         }
 
         protected override void DoProgressCompleted(string worldKey)
         {
-            progress.text = "Complete";
+            text.text = "Press any key to continue...";
         }
 
         protected override void DoHide(string worldKey, Action onComplete)
         {
             root.alpha = 1f;
-            text.alpha = 1f;
-            
             AnimationBuilder.Create(this)
-                .AnimateConstant(1f, x => text.alpha = 1f - x)
                 .AnimateConstant(1f, x => root.alpha = 1f - x)
                 .WithFinisher(onComplete)
                 .Start();
@@ -72,8 +70,7 @@ namespace UnitySceneEx.Demo.Projects.unity_scene_ex.Scripts.Demo
 
         protected override void DoHideImmediately(string worldKey)
         {
-            root.alpha = 0;
-            text.alpha = 0;
+            root.alpha = 0f;
         }
     }
 }
