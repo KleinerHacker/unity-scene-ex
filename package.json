@@ -12,7 +12,7 @@
     "blending"
   ],
   "dependencies": {
-    "org.pcsoft.base": "1.1.0",
+    "org.pcsoft.base": "2.0.0-EA.01",
     "org.pcsoft.editor-ex": "1.2.0",
     "org.pcsoft.asset-loader": "2.1.0"
   },
