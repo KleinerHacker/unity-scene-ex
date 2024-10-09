@@ -1,6 +1,6 @@
 {
   "name": "org.pcsoft.scene-ex",
-  "version": "3.0.0",
+  "version": "3.0.0-EA.01",
   "displayName": "Unity Scene Extension",
   "description": "Extension for Scene Management with support of scene over-blending.",
   "unity": "2021.3",
