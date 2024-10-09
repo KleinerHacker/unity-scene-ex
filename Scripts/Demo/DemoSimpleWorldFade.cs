@@ -49,7 +49,6 @@ namespace UnitySceneEx.Demo.Projects.unity_scene_ex.Scripts.Demo
 
         protected override void DoProgressUpdated(string worldKey, float progress)
         {
-            Debug.LogError("PROGRESS: " + progress);
             this.progress.text = progress + "%";
         }
 
