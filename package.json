@@ -1,6 +1,6 @@
 {
   "name": "org.pcsoft.scene-ex",
-  "version": "3.0.0-EA.01",
+  "version": "3.0.0-EA.2",
   "displayName": "Unity Scene Extension",
   "description": "Extension for Scene Management with support of scene over-blending.",
   "unity": "2021.3",
@@ -12,9 +12,9 @@
     "blending"
   ],
   "dependencies": {
-    "org.pcsoft.base": "2.0.0-EA.01",
-    "org.pcsoft.editor-ex": "1.2.0",
-    "org.pcsoft.asset-loader": "2.1.0"
+    "org.pcsoft.base": "2.0.0-EA.2",
+    "org.pcsoft.editor-ex": "1.2.1",
+    "org.pcsoft.asset-loader": "2.1.1"
   },
   "author": {
     "name": "Pfeiffer C Soft",
