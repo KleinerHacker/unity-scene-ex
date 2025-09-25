@@ -10,7 +10,7 @@ namespace UnitySceneEx.Runtime.Projects.unity_scene_ex.Scripts.Runtime
         public static void Initialize()
         {
             Debug.Log("Initialize World System...");
-            AssetResourcesLoader.LoadFromResources<WorldSettings>("");
+            AssetResourcesManager.FromResources<WorldSettings>("").Load();
         }
     }
 }
